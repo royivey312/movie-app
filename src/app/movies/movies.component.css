@@ -6,7 +6,6 @@ h2 { text-align: center }
 }
 
 .movies {
-  margin: 0em 0em 0em 0em;
   list-style-type: none;
   width: 25em;
   display: table;

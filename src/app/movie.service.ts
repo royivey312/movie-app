@@ -27,7 +27,7 @@ export class MovieService {
   getMovies(): Observable<Movie[]> {
 
     return this.http.get<Movie[]>(this.moviesUrl).pipe(
-      tap(heroes => this.log('Fetched Movies')),
+      tap(() => this.log('Fetched Movies')),
       catchError(this.handleError('getMovies', []))
     );
 
@@ -37,7 +37,7 @@ export class MovieService {
 
     const url = `${this.moviesUrl}/${id}`;
     return this.http.get<Movie>(url).pipe(
-      tap(movie => this.log(`Fetched Movie id=${id}`)),
+      tap(() => this.log(`Fetched Movie id=${id}`)),
       catchError(this.handleError<Movie>(`getMovie id=${id}`))
     );
 
@@ -60,7 +60,7 @@ export class MovieService {
     }
 
     return this.http.get<Movie[]>(`api/movies/?title=${term}`).pipe(
-      tap(_ => this.log(`Found Movies matching "${term}"`)),
+      tap(() => this.log(`Found Movies matching "${term}"`)),
       catchError(this.handleError<Movie[]>('searchMovies', []))
     );
   }
@@ -69,7 +69,7 @@ export class MovieService {
 
   updateMovie(movie: Movie): Observable<any> {
     return this.http.put(this.moviesUrl, movie, this.httpOptions).pipe(
-      tap(_ => this.log(`Updated Movie id=${movie.id}`)),
+      tap(() => this.log(`Updated Movie id=${movie.id}`)),
       catchError(this.handleError<any>('UpdateMovie'))
     );
   }
@@ -86,7 +86,7 @@ export class MovieService {
     const url = `${this.moviesUrl}/${id}`;
 
     return this.http.delete<Movie>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`Deleted Movie id=${id}`)),
+      tap(() => this.log(`Deleted Movie id=${id}`)),
       catchError(this.handleError<Movie>('deleteHero'))
     );
 

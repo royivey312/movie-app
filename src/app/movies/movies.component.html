@@ -1,9 +1,20 @@
 <h2>My Movies</h2>
+<div class="movies">
+  <div *ngFor="let movie of movies" class="row">
+    <div class="column">
+      <a routerLink="/detail/{{movie.id}}">
+        <span class="badge">{{movie.id}}</span> {{movie.title}}
+      </a>
+      <button (click)="delete(movie)">X</button>
+    </div>
+  </div>
+</div>
 
-<ul class="movies">
-  <li *ngFor="let movie of movies">
-    <a routerLink="/detail/{{movie.id}}">
-      <span class="badge">{{movie.id}}</span> {{movie.title}}
-    </a>
-  </li>
-</ul>
+<div class="addMovie">
+  <label>Movie Title:
+    <input #movieTitle />
+  </label>
+  <button (click)="add(movieTitle.value); movieTitle.value=''">
+    Add
+  </button>
+</div>

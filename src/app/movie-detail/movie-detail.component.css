@@ -1,0 +1,22 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  float: left;
+  width: 65px;
+  padding-right: 10px;
+}
+
+.content-row {
+  padding-bottom: 5px;
+}
+
+.label {
+  text-align: right;
+}
+
+button {
+  float: right;
+}

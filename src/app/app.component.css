@@ -1,5 +1,13 @@
+/* AppComponent's private CSS styles */
 h1 {
-  color: #369;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 250%;
+  font-size: 1.2em;
+  color: #999;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 2em;
+  padding-top: 0;
+  text-align: center;
 }

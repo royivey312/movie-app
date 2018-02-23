@@ -1,7 +1,7 @@
 /* DashboardComponent's private CSS styles */
 [class*='col-'] {
   float: left;
-  padding-right: 20px;
+  padding-right: 2px;
   padding-bottom: 20px;
 }
 [class*='col-']:last-of-type {
@@ -30,16 +30,16 @@ h4 {
 .module {
   padding: 20px;
   text-align: center;
-  color: #eee;
+  color: #ffffff;
   max-height: 120px;
   min-width: 120px;
-  background-color: #607D8B;
+  background-color: #ff8036;
   border-radius: 2px;
 }
 .module:hover {
-  background-color: #EEE;
+  background-color: #8c00ff;
   cursor: pointer;
-  color: #607d8b;
+  color: #ffffff;
 }
 .grid-pad {
   padding: 10px 0;

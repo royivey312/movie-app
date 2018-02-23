@@ -10,6 +10,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import {AppRoutingModule} from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InMemoryDataService } from './in-memory-data.service';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {MovieSearchComponent} from './movie-search/movie-search.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -18,16 +23,23 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MoviesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    MovieSearchComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [
     MovieService,
-    MessageService
+    MessageService,
+    InMemoryDataService
   ],
   bootstrap: [AppComponent]
 })

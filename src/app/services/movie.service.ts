@@ -2,10 +2,10 @@ import { Injectable     } from '@angular/core';
 import { Observable     } from 'rxjs/Observable';
 import { of             } from 'rxjs/observable/of';
 
-import { Movie          } from './movie';
+import { Movie          } from '../movie';
 import { MessageService } from './message.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { catchError, tap} from 'rxjs/operators';
 
 @Injectable()
 export class MovieService {
@@ -13,6 +13,10 @@ export class MovieService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
+
+  MOVIES: Movie[] = [
+    {id: 0, title: 'Bob'}
+  ];
 
   private moviesUrl = 'api/movies';
 
@@ -24,12 +28,9 @@ export class MovieService {
     this.messageService.add('MovieService: ' + message);
   }
 
-  getMovies(): Observable<Movie[]> {
+  getMovies(): Movie[] {
 
-    return this.http.get<Movie[]>(this.moviesUrl).pipe(
-      tap(() => this.log('Fetched Movies')),
-      catchError(this.handleError('getMovies', []))
-    );
+    return this.MOVIES;
 
   }
 

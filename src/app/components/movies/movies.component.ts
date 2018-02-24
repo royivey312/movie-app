@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Movie             } from '../movie';
-import { MovieService      } from '../movie.service';
+import { Movie             } from '../../movie';
+import { MovieService      } from '../../services/movie.service';
+import { OmdbService       } from '../../services/omdbservice.service';
 
 @Component({
   selector: 'app-movies',
@@ -11,16 +12,27 @@ import { MovieService      } from '../movie.service';
 export class MoviesComponent implements OnInit {
 
   movies: Movie[];
+  OMDBMovie: any;
 
-  constructor(private movieService: MovieService) { }
+  getOMDBMovie() {
+    this.omdbService.getMovieMovieByTitle('Aliens').subscribe(r => this.OMDBMovie = r );
+  }
+
+  constructor(
+    private movieService: MovieService,
+    private omdbService: OmdbService) { }
 
   ngOnInit() {
     this.getMovies();
+    this.getOMDBMovie();
+
   }
 
   getMovies(): void {
     this.movieService.getMovies()
-      .subscribe(movies => this.movies = movies);
+      .subscribe(movies => {
+        this.movies = movies;
+      });
   }
 
   add(title: string): void {

@@ -17,7 +17,7 @@ export class MovieService {
   idctr = 3;
 
   MOVIES: Movie[] = [
-    {id: 0, title: 'Annihilation'},
+    {id: 0, title: 'Star Wars'},
     {id: 1, title: 'The Thing'   },
     {id: 2, title: 'Ex Machina'  }
   ];
@@ -74,8 +74,8 @@ export class MovieService {
 
 // CRUD Operations
 
-  updateMovie(movie: Movie): Observable<any>{
-    const mov = this.MOVIES.find(m => m.id === movie.id )
+  updateMovie(movie: Movie): Observable<any> {
+    const mov = this.MOVIES.find(m => m.id === movie.id );
           mov.title = movie.title;
     return of(mov);
   }

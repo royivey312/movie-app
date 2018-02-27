@@ -1,4 +1,4 @@
-class Rating {
+export class Rating {
   source: string;
   value: string;
 }
@@ -16,7 +16,7 @@ export class OmdbMovie {
   Plot: string;
   Poster: string;
   Production: string;
-  Rated: string
+  Rated: string;
   Ratings: Rating[];
   Released: string;
   Response: string;
@@ -25,7 +25,7 @@ export class OmdbMovie {
   Type: string;
   Website: string;
   Writer: string;
-  Year: string
+  Year: string;
   imdbID: string;
   imdbRating: string;
   imdbVotes: string;

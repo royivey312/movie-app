@@ -1,7 +1,5 @@
 <h2>My Movies</h2>
 
-<app-omdb-movie *ngFor="let movie of movies" [title]="movie.title"></app-omdb-movie>
-
 <div class="addMovie">
   <label>Movie Title:
     <input #movieTitle />
@@ -10,3 +8,5 @@
     Add
   </button>
 </div>
+
+<app-omdb-movie *ngFor="let movie of movies" [title]="movie.title"></app-omdb-movie>

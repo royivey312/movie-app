@@ -1,35 +1,53 @@
 <div *ngIf="movie" class="omdb-movie">
 
-  <div class="flex-container">
-    <div>
-      <h2> {{movie.Title}}  </h2>
-      <div class="row">
-        <tr>
-          <td rowspan="5"><img src={{movie.Poster}}/></td>
-          <td colspan="4"> <b>Actors:</b> {{movie.Actors}} </td>
-        </tr>
-
-        <tr>
-          <td colspan="2"> <b>Directed By:</b> {{movie.Director}}   </td>
-          <td colspan="2"> <b>Written By:</b> {{movie.Writer}}   </td>
-        </tr>
-        <tr>
-          <td colspan="2"> <b>Genre:   </b> {{movie.Genre}} </td>
-          <td> <b>Rating:</b> {{movie.Rated}} </td>
-          <td> <b>IMDB Rating:</b> {{movie.imdbRating}} </td>
-        </tr>
-        <tr>
-          <td> <b>Gross Box Office:</b> {{movie.BoxOffice}} </td>
-          <td> <b>Rating:</b> {{movie.Rated}} </td>
-          <td> <b>Released:   </b> {{movie.Released}}   </td>
-          <td> <b>IMDB ID:    </b> {{movie.imdbID}}</td>
-        </tr>
-        <tr>
-          <td colspan="3"> <b>Language:</b> {{movie.Language}} </td>
-        </tr>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>{{movie.Title}}</h2>
       </div>
     </div>
+    <div class="row">
 
+      <div class="col-auto" style="padding: 0px;">
+        <img src={{movie.Poster}}/>
+      </div>
+
+      <div class="col-sm-4 col-md-6 col-lg-8">
+        <div class="row">Director:    {{movie.Director}}   </div>
+        <div class="row">Actors:      {{movie.Actors}}     </div>
+        <div class="row">Writer(s):   {{movie.Writer}}     </div>
+        <div class="row">Producer(s): {{movie.Production}} </div>
+        <div class="row">Rated:       {{movie.Rated}}      </div>
+        <div class="row">Genre:       {{movie.Genre}}      </div>
+        <div class="row">Type:        {{movie.Type}}       </div>
+        <div class="row">Runtime:     {{movie.Runtime}}    </div>
+        <br>
+        <div class="row">Plot:        {{movie.Plot}}       </div>
+        <br>
+        <div class="row">
+
+          <div class="col-6">
+            <div class="row">IMDB Rating:           {{movie.imdbRating}} </div>
+            <div class="row">IMDB Votes:            {{movie.imdbVotes}}  </div>
+            <div class="row">Metascore:             {{movie.Metascore}}  </div>
+            <div class="row">Awards:                {{movie.Awards}}     </div>
+            <div class="row">Website:
+              <a target="_blank" href={{movie.Website}}>Link</a>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="row">Country:               {{movie.Country}}    </div>
+            <div class="row">Language:              {{movie.Language}}   </div>
+            <div class="row">Theatrical Release:    {{movie.Released}}   </div>
+            <div class="row">Home Release:          {{movie.DVD}}        </div>
+            <div class="row">Box Office:            {{movie.BoxOffice}}  </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 

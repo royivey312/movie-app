@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie             } from '../../movie';
 import { MovieService      } from '../../services/movie.service';
 import { OmdbService       } from '../../services/omdbservice.service';
+import {OmdbMovie} from '../../omdbmovie';
 
 @Component({
   selector: 'app-movies',
@@ -12,20 +13,11 @@ import { OmdbService       } from '../../services/omdbservice.service';
 export class MoviesComponent implements OnInit {
 
   movies: Movie[];
-  OMDBMovie: any;
 
-  getOMDBMovie() {
-    this.omdbService.getMovieMovieByTitle('Aliens').subscribe(r => this.OMDBMovie = r );
-  }
-
-  constructor(
-    private movieService: MovieService,
-    private omdbService: OmdbService) { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
     this.getMovies();
-    this.getOMDBMovie();
-
   }
 
   getMovies(): void {
@@ -38,10 +30,13 @@ export class MoviesComponent implements OnInit {
   add(title: string): void {
     title = title.trim();
     if (!title) { return; }
-    this.movieService.addMovie({ title } as Movie)
-      .subscribe(movie => {
-        this.movies.push(movie);
-      });
+    this.movieService.addMovie({ title } as Movie).subscribe(
+       movie => {
+         if (!this.movies.find(m => m.title === title)) {
+         this.movies.push(movie);
+         }
+       }
+    );
   }
 
   delete(movie: Movie): void {

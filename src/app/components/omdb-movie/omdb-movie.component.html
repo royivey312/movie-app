@@ -1,0 +1,37 @@
+<div *ngIf="movie" class="omdb-movie">
+
+  <div class="flex-container">
+    <div>
+      <h2> {{movie.Title}}  </h2>
+      <div class="row">
+        <tr>
+          <td rowspan="5"><img src={{movie.Poster}}/></td>
+          <td colspan="4"> <b>Actors:</b> {{movie.Actors}} </td>
+        </tr>
+
+        <tr>
+          <td colspan="2"> <b>Directed By:</b> {{movie.Director}}   </td>
+          <td colspan="2"> <b>Written By:</b> {{movie.Writer}}   </td>
+        </tr>
+        <tr>
+          <td colspan="2"> <b>Genre:   </b> {{movie.Genre}} </td>
+          <td> <b>Rating:</b> {{movie.Rated}} </td>
+          <td> <b>IMDB Rating:</b> {{movie.imdbRating}} </td>
+        </tr>
+        <tr>
+          <td> <b>Gross Box Office:</b> {{movie.BoxOffice}} </td>
+          <td> <b>Rating:</b> {{movie.Rated}} </td>
+          <td> <b>Released:   </b> {{movie.Released}}   </td>
+          <td> <b>IMDB ID:    </b> {{movie.imdbID}}</td>
+        </tr>
+        <tr>
+          <td colspan="3"> <b>Language:</b> {{movie.Language}} </td>
+        </tr>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+

@@ -14,8 +14,12 @@ export class MovieService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
+  idctr = 3;
+
   MOVIES: Movie[] = [
-    {id: 0, title: 'Bob'}
+    {id: 0, title: 'Annihilation'},
+    {id: 1, title: 'The Thing'   },
+    {id: 2, title: 'Ex Machina'  }
   ];
 
   private moviesUrl = 'api/movies';
@@ -28,13 +32,15 @@ export class MovieService {
     this.messageService.add('MovieService: ' + message);
   }
 
-  getMovies(): Movie[] {
-
-    return this.MOVIES;
-
+  getMovies(): Observable<Movie[]> {
+    return of(this.MOVIES);
   }
 
   getMovie(id: number): Observable<Movie> {
+    return of(this.MOVIES.find(m => m.id === id));
+  }
+
+  getMovie_API(id: number): Observable<Movie> {
 
     const url = `${this.moviesUrl}/${id}`;
     return this.http.get<Movie>(url).pipe(
@@ -68,7 +74,13 @@ export class MovieService {
 
 // CRUD Operations
 
-  updateMovie(movie: Movie): Observable<any> {
+  updateMovie(movie: Movie): Observable<any>{
+    const mov = this.MOVIES.find(m => m.id === movie.id )
+          mov.title = movie.title;
+    return of(mov);
+  }
+
+  updateMovie_API(movie: Movie): Observable<any> {
     return this.http.put(this.moviesUrl, movie, this.httpOptions).pipe(
       tap(() => this.log(`Updated Movie id=${movie.id}`)),
       catchError(this.handleError<any>('UpdateMovie'))
@@ -76,6 +88,12 @@ export class MovieService {
   }
 
   addMovie(movie: Movie): Observable<Movie> {
+    const mov = {id: this.idctr++, title: movie.title};
+    this.MOVIES.push(mov);
+    return of(mov);
+  }
+
+  addMovie_API(movie: Movie): Observable<Movie> {
     return this.http.post<Movie>(this.moviesUrl, movie, this.httpOptions).pipe(
       tap((m: Movie) => this.log(`Added Movie w/ id=${m.id}`)),
       catchError(this.handleError<Movie>('addMovie'))
@@ -83,7 +101,15 @@ export class MovieService {
   }
 
   deleteMovie(movie: Movie | number): Observable<Movie> {
-    const id = typeof movie === 'number' ? movie : movie.id;
+    const id    = typeof movie === 'number' ? movie : movie.id;
+    const index = this.MOVIES.findIndex(m => m.id === id);
+
+    delete this.MOVIES[index];
+    return of({id: id, title: 'DELETED'});
+  }
+
+  deleteMovie_API(movie: Movie | number): Observable<Movie> {
+    const id  = typeof movie === 'number' ? movie : movie.id;
     const url = `${this.moviesUrl}/${id}`;
 
     return this.http.delete<Movie>(url, this.httpOptions).pipe(

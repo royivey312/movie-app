@@ -2,7 +2,6 @@ import { BrowserModule                  } from '@angular/platform-browser';
 import { NgModule                       } from '@angular/core';
 import { FormsModule                    } from '@angular/forms';
 import { HttpClientModule               } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent                   } from './app.component';
 import { AppRoutingModule               } from './app-routing.module';
@@ -17,6 +16,7 @@ import { MessagesComponent              } from './components/messages/messages.c
 import { DashboardComponent             } from './components/dashboard/dashboard.component';
 import { MovieSearchComponent           } from './components/movie-search/movie-search.component';
 import { NavBarComponent                } from './components/nav-bar/nav-bar.component';
+import { OmdbMovieComponent } from './components/omdb-movie/omdb-movie.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { NavBarComponent                } from './components/nav-bar/nav-bar.com
     MessagesComponent,
     DashboardComponent,
     MovieSearchComponent,
-    NavBarComponent
+    NavBarComponent,
+    OmdbMovieComponent
   ],
   imports: [
     BrowserModule,

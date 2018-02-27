@@ -1,0 +1,45 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.flex-container > div
+{
+  color: #000000;
+  background: #cbc8f3;
+  height: 0%;
+  width: 100%;
+  margin: 10px;
+  text-align: left;
+  line-height: 75px;
+  border-radius: .5em;
+  padding-left: 10px;
+  font-size: 20px;
+  flex-direction: column;
+
+}
+
+.flex-container > .row {
+  flex-direction: row;
+}
+
+td {
+  padding-right: 10px;
+  padding-left: 10px;
+  border-color: #cbc8f3;
+  border-right: #ffffff;
+  border-bottom: #ffffff;
+  border-style: solid;
+}
+
+h2 {
+  height: 25%;
+  font-size: 30px;
+  color: #ffffff;
+  background: #6bb26d;
+  padding-left: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: .2em;
+}

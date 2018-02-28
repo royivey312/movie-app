@@ -2,12 +2,13 @@
 h1 {
   font-size: 1.2em;
   color: #999;
-  margin-bottom: 0;
+  alignment: center;
 }
 
 h2 {
+  margin: 40px auto 20px auto;
+
   font-size: 2em;
-  margin-top: 2em;
   padding-top: 0;
   text-align: center;
 }

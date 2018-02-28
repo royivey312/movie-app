@@ -19,7 +19,9 @@ export class MovieService {
   MOVIES: Movie[] = [
     {id: 0, title: 'Star Wars'},
     {id: 1, title: 'The Thing'   },
-    {id: 2, title: 'Ex Machina'  }
+    {id: 2, title: 'Ex Machina'  },
+    {id: 3, title: 'Deadpool'},
+    {id: 4, title: 'The Game'}
   ];
 
   private moviesUrl = 'api/movies';

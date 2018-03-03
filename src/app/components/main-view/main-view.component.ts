@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
 class NavLink {
@@ -7,12 +7,14 @@ class NavLink {
 }
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: 'app-main-view',
+  templateUrl: './main-view.component.html',
+  styleUrls: ['./main-view.component.css']
 })
 
-export class NavBarComponent implements OnInit {
+export class MainViewComponent implements OnInit {
+
+  constructor() { }
 
   scrollbarOptions = { axis: 'y', theme: 'minimal' };
 
@@ -21,24 +23,19 @@ export class NavBarComponent implements OnInit {
     {title: 'My Movies', link: '/movies'}
   ];
 
-  constructor() { }
-
   ngOnInit() {
 
-    $(() => {
+    $(document).ready(() => {
 
       $('#sidebarCollapse').on('click', () => {
 
         $('#sidebar, #content')   .toggleClass('active');
         $('.collapse.in')         .toggleClass('in');
-        $('a[aria-expanded=true]').attr       ('aria-expanded'
-                                              , 'false');
+        $('a[aria-expanded=true]').attr       ('aria-expanded', 'false');
 
       });
 
     });
-
-
   }
 
 }

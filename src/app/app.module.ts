@@ -17,6 +17,8 @@ import { DashboardComponent             } from './components/dashboard/dashboard
 import { MovieSearchComponent           } from './components/movie-search/movie-search.component';
 import { NavBarComponent                } from './components/nav-bar/nav-bar.component';
 import { OmdbMovieComponent } from './components/omdb-movie/omdb-movie.component';
+import {MalihuScrollbarModule} from 'ngx-malihu-scrollbar/dist/lib';
+import { MainViewComponent } from './components/main-view/main-view.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { OmdbMovieComponent } from './components/omdb-movie/omdb-movie.component
     DashboardComponent,
     MovieSearchComponent,
     NavBarComponent,
-    OmdbMovieComponent
+    OmdbMovieComponent,
+    MainViewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MalihuScrollbarModule.forRoot()
   ],
   providers: [
     MovieService,

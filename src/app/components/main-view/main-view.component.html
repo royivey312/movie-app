@@ -1,0 +1,47 @@
+<div class="wrapper">
+
+  <nav id="sidebar" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+
+    <div class="sidebar-header">
+      <h2>Movie Collection</h2>
+    </div>
+
+    <!--Sidebar links-->
+    <ul class="list-unstyled components">
+      <li>
+        <app-movie-search></app-movie-search>
+      </li>
+      <li *ngFor="let link of navLinks" class="active">
+        <a routerLink='{{link.link}}'
+           routerLinkActive="active-link">{{link.title}}</a>
+      </li>
+      <li>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div id="content" class="">
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <span class="glyphicon glyphicon-align-left"></span>
+            <span>Toggle Sidebar</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="row">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="row">
+      <app-messages></app-messages>
+    </div>
+
+  </div>
+</div>

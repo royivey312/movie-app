@@ -1,5 +1,20 @@
-<nav>
-  <a *ngFor="let link of navLinks"
-     routerLink='{{link.link}}'
-     routerLinkActive="active-link">{{link.title}}</a>
+<nav id="sidebar" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+
+  <div class="sidebar-header">
+    <h2>Movie Collection</h2>
+  </div>
+
+  <!--Sidebar links-->
+  <ul class="list-unstyled components">
+    <li>
+      <app-movie-search></app-movie-search>
+    </li>
+    <li *ngFor="let link of navLinks" class="active">
+      <a routerLink='{{link.link}}'
+         routerLinkActive="active-link">{{link.title}}</a>
+    </li>
+    <li>
+    </li>
+  </ul>
+
 </nav>

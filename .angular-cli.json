@@ -20,9 +20,9 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
         "bootswatch-styles/bootstrap-pulse.css",
-        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css"
+        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+        "../node_modules/octicons/build/build.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

@@ -19,6 +19,7 @@ import { NavBarComponent                } from './components/nav-bar/nav-bar.com
 import { OmdbMovieComponent } from './components/omdb-movie/omdb-movie.component';
 import {MalihuScrollbarModule} from 'ngx-malihu-scrollbar/dist/lib';
 import { MainViewComponent } from './components/main-view/main-view.component';
+import { OcticonDirective } from './directives/octicon/octicon.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MainViewComponent } from './components/main-view/main-view.component';
     MovieSearchComponent,
     NavBarComponent,
     OmdbMovieComponent,
-    MainViewComponent
+    MainViewComponent,
+    OcticonDirective
   ],
   imports: [
     BrowserModule,

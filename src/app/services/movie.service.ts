@@ -42,16 +42,6 @@ export class MovieService {
     return of(this.MOVIES.find(m => m.id === id));
   }
 
-  getMovie_API(id: number): Observable<Movie> {
-
-    const url = `${this.moviesUrl}/${id}`;
-    return this.http.get<Movie>(url).pipe(
-      tap(() => this.log(`Fetched Movie id=${id}`)),
-      catchError(this.handleError<Movie>(`getMovie id=${id}`))
-    );
-
-  }
-
   private handleError<T>(method: string, result?: T) {
     return (error: any): Observable<T> => {
 
@@ -82,24 +72,10 @@ export class MovieService {
     return of(mov);
   }
 
-  updateMovie_API(movie: Movie): Observable<any> {
-    return this.http.put(this.moviesUrl, movie, this.httpOptions).pipe(
-      tap(() => this.log(`Updated Movie id=${movie.id}`)),
-      catchError(this.handleError<any>('UpdateMovie'))
-    );
-  }
-
   addMovie(movie: Movie): Observable<Movie> {
     const mov = {id: this.idctr++, title: movie.title};
     this.MOVIES.push(mov);
     return of(mov);
-  }
-
-  addMovie_API(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(this.moviesUrl, movie, this.httpOptions).pipe(
-      tap((m: Movie) => this.log(`Added Movie w/ id=${m.id}`)),
-      catchError(this.handleError<Movie>('addMovie'))
-    );
   }
 
   deleteMovie(movie: Movie | number): Observable<Movie> {
@@ -109,17 +85,5 @@ export class MovieService {
     delete this.MOVIES[index];
     return of({id: id, title: 'DELETED'});
   }
-
-  deleteMovie_API(movie: Movie | number): Observable<Movie> {
-    const id  = typeof movie === 'number' ? movie : movie.id;
-    const url = `${this.moviesUrl}/${id}`;
-
-    return this.http.delete<Movie>(url, this.httpOptions).pipe(
-      tap(() => this.log(`Deleted Movie id=${id}`)),
-      catchError(this.handleError<Movie>('deleteHero'))
-    );
-
-  }
-
 
 }

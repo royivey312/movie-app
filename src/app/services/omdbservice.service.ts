@@ -47,10 +47,29 @@ export class OmdbService {
       tap(res => { if (res) { this.log(`Fetched ${title} from OMDB`); } } ),
       catchError(this.handleError<any>(`getMovieByTitle title=${movieTitle}`))
     );
-
   }
 
+  searchMovieByTitle(title: string): Observable<HttpResponse<OMDBSearchResults>> {
+    const movieTitle = title;
 
+    const url = this.getReqUrlBase();
 
+    const req = new HttpRequest(
+      'GET', url,
+      {params: new HttpParams().set('apikey', this.accessKey)
+                                   .set('s', movieTitle)}
+    );
 
+    return this.http.request(req).pipe(
+      tap(res => { if (res) { this.log(`Fetched Movie Search for ${title} from OMDB`); } } ),
+      catchError(this.handleError<any>(`searchMovieByTitle title=${title}`))
+    );
+  }
+
+}
+
+export class OMDBSearchResults {
+  Search: OmdbMovie[];
+  totalResults: string;
+  Response: string;
 }

@@ -4,6 +4,10 @@ import {Movie} from '../../movie';
 import {MovieService} from '../../services/movie.service';
 import {Subject} from 'rxjs/Subject';
 import {switchMap, distinctUntilChanged, debounceTime} from 'rxjs/operators';
+import {OMDBSearchResults, OmdbService} from '../../services/omdbservice.service';
+import {OmdbMovie} from '../../omdbmovie';
+import {HttpResponse} from '@angular/common/http';
+import {of} from 'rxjs/observable/of';
 
 @Component({
   selector: 'app-movie-search',
@@ -12,21 +16,32 @@ import {switchMap, distinctUntilChanged, debounceTime} from 'rxjs/operators';
 })
 export class MovieSearchComponent implements OnInit {
 
-  movies$: Observable<Movie[]>;
+  movies: OmdbMovie[];
   private searchTerms = new Subject<string>();
 
-  constructor(private movieService: MovieService) { }
+  constructor(private omdbMovieService: OmdbService) { }
 
   search(term: string): void {
     this.searchTerms.next(term);
   }
 
   ngOnInit() {
-    this.movies$ = this.searchTerms.pipe(
+    this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.movieService.searchMovies(term))
-    );
+      switchMap((term: string) => this.omdbMovieService.searchMovieByTitle(term))
+    ).subscribe(
+      res => {
+
+        if (res.body) {
+          const searchres: OMDBSearchResults = res.body;
+          console.log(searchres);
+          this.movies = searchres.Search;
+        }
+
+      });
   }
 
 }
+
+

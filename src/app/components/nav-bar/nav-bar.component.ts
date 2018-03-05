@@ -15,7 +15,7 @@ export class NavBarComponent implements OnInit {
 
   navLinks: NavLink[] = [
     {title: 'Home', link: '/dashboard'},
-    {title: 'My Movies', link: '/movies'}
+    {title: 'My Movies', link: '/movies/user'}
   ];
 
   constructor() { }

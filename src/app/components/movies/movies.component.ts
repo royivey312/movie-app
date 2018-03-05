@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { Movie             } from '../../movie';
 import { MovieService      } from '../../services/movie.service';
@@ -12,7 +12,8 @@ import {OmdbMovie} from '../../omdbmovie';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: Movie[];
+  @Input () OmdbMovies: OmdbMovie[];
+  @Input () movies: Movie[];
 
   constructor(private movieService: MovieService) { }
 

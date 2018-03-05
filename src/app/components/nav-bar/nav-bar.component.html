@@ -4,13 +4,12 @@
 
 <!--Sidebar links-->
 <ul class="list-unstyled components">
-  <li>
-    <app-movie-search></app-movie-search>
-  </li>
   <li *ngFor="let link of navLinks" class="active">
     <a routerLink='{{link.link}}'
        routerLinkActive="active-link">{{link.title}}</a>
   </li>
+  <br>
   <li>
+    <app-movie-search></app-movie-search>
   </li>
 </ul>

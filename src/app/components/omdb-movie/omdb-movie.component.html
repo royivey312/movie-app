@@ -8,7 +8,7 @@
     </div>
     <div class="row">
 
-      <div class="col-auto" style="padding: 0px;">
+      <div class="col-auto" style="padding: 0;">
         <img src={{movie.Poster}}/>
       </div>
 
@@ -47,6 +47,17 @@
       </div>
 
     </div>
+    <div *ngIf="add" class="row">
+      <div class="col-9">
+        <button class="btn-primary" (click)="addMovie()">Add To Collection</button>
+      </div>
+    </div>
+    <div *ngIf="!add" class="row">
+      <div class="col-9">
+        <button class="btn-danger" (click)="deleteMovie()">Remove from Collection</button>
+      </div>
+    </div>
+
   </div>
 </div>
 

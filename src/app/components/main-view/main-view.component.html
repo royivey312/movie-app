@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-      <app-messages></app-messages>
+      <app-messages *ngIf="!production"></app-messages>
     </div>
 
   </div>

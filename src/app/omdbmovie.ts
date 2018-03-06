@@ -1,3 +1,5 @@
+import {Movie} from './movie';
+
 export class Rating {
   source: string;
   value: string;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { environment } from '../../../environments/environment';
+
 
 class NavLink {
   title: string;
@@ -16,12 +18,9 @@ export class MainViewComponent implements OnInit {
 
   constructor() { }
 
-  scrollbarOptions = { axis: 'y', theme: 'minimal' };
+  production = environment.production;
 
-  navLinks: NavLink[] = [
-    {title: 'Home', link: '/dashboard'},
-    {title: 'My Movies', link: '/movies'}
-  ];
+  scrollbarOptions = { axis: 'y', theme: 'minimal' };
 
   ngOnInit() {
 

@@ -3,12 +3,6 @@
 
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 
-  <ul class="search-result">
-    <li *ngFor="let movie of movies" >
-      <a routerLink="/detail/{{movie.Title}}">
-        {{movie.Title}}
-      </a>
-    </li>
-  </ul>
+  <app-movies *ngIf="movies" [OmdbMovies]="movies" [add]="true"></app-movies>
 
 </div>

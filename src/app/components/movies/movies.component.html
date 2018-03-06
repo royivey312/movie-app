@@ -1,4 +1,11 @@
-<app-omdb-movie *ngFor="let movie of movies" [title]="movie.title"></app-omdb-movie>
+
+<ng-container *ngIf="movies">
+  <app-omdb-movie *ngFor="let movie of movies" [title]="movie ? movie.title : ''" [add]="add"></app-omdb-movie>
+</ng-container>
+
+<ng-container *ngIf="OmdbMovies">
+  <app-omdb-movie *ngFor="let movie of OmdbMovies" [movie]="movie" [add]="add"></app-omdb-movie>
+</ng-container>
 
 
 

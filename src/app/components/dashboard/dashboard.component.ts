@@ -19,7 +19,18 @@ export class DashboardComponent implements OnInit {
 
   getMovies(): void {
     this.movieService.getMovies()
-      .subscribe(movies => this.movies = movies.slice(0, 5));
+      .subscribe(movies => this.movies = movies.filter(m => typeof m !== 'undefined').slice(0, 5));
+  }
+
+  updatedMovies(): Movie[] {
+    for (const m in this.movies) {
+      if (!m) {
+        this.getMovies();
+        break;
+      }
+    }
+
+    return this.movies;
   }
 
 }

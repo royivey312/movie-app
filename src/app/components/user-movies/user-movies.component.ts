@@ -25,23 +25,6 @@ export class UserMoviesComponent implements OnInit {
       });
   }
 
-  add(title: string): void {
-
-    title = title.trim();
-
-    if (!title) {
-      return;
-    }
-
-    this.movieService.addMovie({title} as Movie).subscribe(
-      movie => {
-        if (!this.movies.find(m => m.title === title)) {
-          this.movies.push(movie);
-        }
-      }
-    );
-  }
-
   delete(movie: Movie): void {
     this.movies = this.movies.filter(m => m !== movie);
     this.movieService.deleteMovie(movie).subscribe();

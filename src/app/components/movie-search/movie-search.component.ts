@@ -35,7 +35,6 @@ export class MovieSearchComponent implements OnInit {
 
         if (res.body) {
           const searchres: OMDBSearchResults = res.body;
-          console.log(searchres);
           this.movies = searchres.Search;
         }
 

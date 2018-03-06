@@ -1,12 +1,3 @@
 <h2>My Movies</h2>
 
-<div class="addMovie">
-  <label>Movie Title:
-    <input #movieTitle />
-  </label>
-  <button (click)="add(movieTitle.value); movieTitle.value=''">
-    Add
-  </button>
-</div>
-
-<app-movies [movies]="movies"></app-movies>
+<app-movies [movies]="movies" [add]="false"></app-movies>

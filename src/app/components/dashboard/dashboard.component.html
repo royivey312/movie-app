@@ -1,11 +1,11 @@
 <h3>Top Movies</h3>
 <div class="container">
-  <div *ngFor="let movie of movies" class="col-4">
-    <a routerLink="/detail/{{movie.id}}">
-      <div class="module movie">
-        <h4>{{movie.title}}</h4>
-      </div>
-    </a>
+  <div *ngFor="let movie of updatedMovies()" class="col-4">
+      <a routerLink="/detail/{{movie.id}}">
+        <div class="module movie">
+          <h4>{{movie.title}}</h4>
+        </div>
+      </a>
   </div>
 
   <div class="col-12">

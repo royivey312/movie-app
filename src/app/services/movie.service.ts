@@ -5,7 +5,7 @@ import { of             } from 'rxjs/observable/of';
 import { Movie          } from '../movie';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { catchError, tap} from 'rxjs/operators';
+import {OmdbMovie} from '../omdbmovie';
 
 @Injectable()
 export class MovieService {
@@ -14,32 +14,28 @@ export class MovieService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  idctr = 3;
 
-  MOVIES: Movie[] = [
-    {id: 0, title: 'Star Wars'},
-    {id: 1, title: 'The Thing'   },
-    {id: 2, title: 'Ex Machina'  },
-    {id: 3, title: 'Deadpool'},
-    {id: 4, title: 'The Game'}
+  static MOVIES: Movie[] = [
+    {id: 0, title: 'Star Wars: Episode IV - A New Hope' , imdbID: 'tt0076759'},
+    {id: 1, title: 'The Thing' , imdbID: 'tt0084787'},
+    {id: 2, title: 'Ex Machina', imdbID: 'tt0470752'},
+    {id: 3, title: 'Deadpool'  , imdbID: 'tt1431045'},
+    {id: 4, title: 'The Game'  , imdbID: 'tt0119174'}
   ];
 
-  private moviesUrl = 'api/movies';
+  static idctr = 5;
 
-  private httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-  };
 
   private log(message: string) {
     this.messageService.add('MovieService: ' + message);
   }
 
   getMovies(): Observable<Movie[]> {
-    return of(this.MOVIES);
+    return of(MovieService.MOVIES);
   }
 
   getMovie(id: number): Observable<Movie> {
-    return of(this.MOVIES.find(m => m.id === id));
+    return of(MovieService.MOVIES.find(m => m.id === id));
   }
 
   private handleError<T>(method: string, result?: T) {
@@ -52,38 +48,22 @@ export class MovieService {
     };
   }
 
-  searchMovies(term: string): Observable<Movie[]> {
-    if (!term.trim()) {
-      // if not a search term
-      return of([]);
-    }
-
-    return this.http.get<Movie[]>(`api/movies/?title=${term}`).pipe(
-      tap(() => this.log(`Found Movies matching "${term}"`)),
-      catchError(this.handleError<Movie[]>('searchMovies', []))
-    );
-  }
-
 // CRUD Operations
 
-  updateMovie(movie: Movie): Observable<any> {
-    const mov = this.MOVIES.find(m => m.id === movie.id );
-          mov.title = movie.title;
+  addMovie(movie: OmdbMovie): Observable<Movie> {
+    const mov    = { id: 0, title: movie.Title, imdbID: movie.imdbID };
+          mov.id = MovieService.idctr++;
+
+    MovieService.MOVIES.push(mov);
     return of(mov);
   }
 
-  addMovie(movie: Movie): Observable<Movie> {
-    const mov = {id: this.idctr++, title: movie.title};
-    this.MOVIES.push(mov);
-    return of(mov);
-  }
+  deleteMovie(movie: Movie): Observable<Movie> {
+    const imdbID = movie.imdbID;
+    const index  = MovieService.MOVIES.findIndex(m => m.imdbID === imdbID);
 
-  deleteMovie(movie: Movie | number): Observable<Movie> {
-    const id    = typeof movie === 'number' ? movie : movie.id;
-    const index = this.MOVIES.findIndex(m => m.id === id);
-
-    delete this.MOVIES[index];
-    return of({id: id, title: 'DELETED'});
+    MovieService.MOVIES.splice(index, 1);
+    return of({id: 0, title: 'DELETED', imdbID: ''});
   }
 
 }

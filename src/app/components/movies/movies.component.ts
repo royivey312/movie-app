@@ -12,7 +12,6 @@ export class MoviesComponent implements OnInit {
 
   @Input () OmdbMovies: OmdbMovie[];
   @Input () movies    : Movie[];
-  @Input () add       : boolean;
 
   constructor() { }
 

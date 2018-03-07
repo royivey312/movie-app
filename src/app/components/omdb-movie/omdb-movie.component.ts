@@ -13,7 +13,7 @@ export class OmdbMovieComponent implements OnInit {
 
   @Input() title: string;
   @Input() movie: OmdbMovie;
-  @Input() add = false;
+  inCollection: boolean;
 
   constructor(
     private omdbService: OmdbService,
@@ -28,18 +28,31 @@ export class OmdbMovieComponent implements OnInit {
           this.movie = m.body;
           if (this.movie) {
             // console.log(this.movie);
+            this.inCollection = this.movieInCollection();
           }
         }
 
       );
   }
 
+  private movieInCollection(): boolean {
+    const collection = MovieService.MOVIES;
+
+    if (collection.find(m => m.imdbID === this.movie.imdbID)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   addMovie() {
     this.movieService.addMovie(this.movie);
+    this.inCollection = true;
   }
 
   deleteMovie() {
     this.movieService.deleteMovie( { imdbID: this.movie.imdbID } as Movie );
+    this.inCollection = false;
   }
 
 }

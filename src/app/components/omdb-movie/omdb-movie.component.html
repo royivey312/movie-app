@@ -47,17 +47,18 @@
       </div>
 
     </div>
-    <div *ngIf="add" class="row">
-      <div class="col-9">
-        <button class="btn-primary" (click)="addMovie()">Add To Collection</button>
+    <div class="btn-bar">
+      <div *ngIf="!inCollection" class="row">
+        <div class="col-9">
+          <button class="btn-primary" (click)="addMovie()">Add To Collection</button>
+        </div>
+      </div>
+      <div *ngIf="inCollection" class="row">
+        <div class="col-9">
+          <button class="btn-danger" (click)="deleteMovie()">Remove from Collection</button>
+        </div>
       </div>
     </div>
-    <div *ngIf="!add" class="row">
-      <div class="col-9">
-        <button class="btn-danger" (click)="deleteMovie()">Remove from Collection</button>
-      </div>
-    </div>
-
   </div>
 </div>
 

@@ -1,66 +1,45 @@
-<div *ngIf="movie" class="omdb-movie">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2>{{movie.Title}}</h2>
-      </div>
-    </div>
-    <div class="row">
-
-      <div class="col-auto" style="padding: 0;">
-        <img src={{movie.Poster}}/>
-      </div>
-
-      <div class="col-sm-4 col-md-5 col-lg-6 col-xl-8">
-        <div class="row">Director:    {{movie.Director}}   </div>
-        <div class="row">Actors:      {{movie.Actors}}     </div>
-        <div class="row">Writer(s):   {{movie.Writer}}     </div>
-        <div class="row">Producer(s): {{movie.Production}} </div>
-        <div class="row">Rated:       {{movie.Rated}}      </div>
-        <div class="row">Genre:       {{movie.Genre}}      </div>
-        <div class="row">Runtime:     {{movie.Runtime}}    </div>
-        <br>
-        <div class="row">Plot:        {{movie.Plot}}       </div>
-        <br>
-        <div class="row">
-
-          <div class="col-6">
-            <div class="row">IMDB Rating:           {{movie.imdbRating}} </div>
-            <div class="row">IMDB Votes:            {{movie.imdbVotes}}  </div>
-            <div class="row">Metascore:             {{movie.Metascore}}  </div>
-            <div class="row">Awards:                {{movie.Awards}}     </div>
-            <div class="row">Website:
-              <a target="_blank" href={{movie.Website}}>Link</a>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="row">Country:               {{movie.Country}}    </div>
-            <div class="row">Language:              {{movie.Language}}   </div>
-            <div class="row">Theatrical Release:    {{movie.Released}}   </div>
-            <div class="row">Home Release:          {{movie.DVD}}        </div>
-            <div class="row">Box Office:            {{movie.BoxOffice}}  </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-    <div class="btn-bar">
-      <div *ngIf="!inCollection" class="row">
-        <div class="col-9">
+<div *ngIf="movie">
+  <div class="card main-card">
+    <div class="card-header">
+      <h3 style="display: inline-block">{{movie.Title}}</h3>
+      <div class="button" *ngIf="!inCollection" style="display: inline-block">
           <button class="btn-primary" (click)="addMovie()">Add To Collection</button>
-        </div>
       </div>
-      <div *ngIf="inCollection" class="row">
-        <div class="col-9">
+      <div class="button" *ngIf="inCollection" style="display: inline-block">
           <button class="btn-danger" (click)="deleteMovie()">Remove from Collection</button>
-        </div>
       </div>
     </div>
+
+    <div class="card-body">
+          <div class="card poster border-0">
+            <img src={{movie.Poster}}/>
+          </div>
+          <div class="card border-0 col-auto" style="padding-left: 0">
+            <div class="card border-right-0 border-left-0">Director:    {{movie.Director}}   </div>
+            <div class="card border-right-0 border-left-0">Actors:      {{movie.Actors}}     </div>
+            <div class="card border-right-0 border-left-0">Writer(s):   {{movie.Writer}}     </div>
+            <div class="card border-right-0 border-left-0">Producer(s): {{movie.Production}} </div>
+            <div class="card border-right-0 border-left-0">Rated:       {{movie.Rated}}      </div>
+            <div class="card border-right-0 border-left-0">Genre:       {{movie.Genre}}      </div>
+            <div class="card border-right-0 border-left-0">Runtime:     {{movie.Runtime}}    </div>
+            <div class="card border-right-0 border-left-0">Plot:        {{movie.Plot}}       </div>
+            <div class="card border-right-0 border-left-0">IMDB Rating:           {{movie.imdbRating}} </div>
+            <div class="card border-right-0 border-left-0">IMDB Votes:            {{movie.imdbVotes}}  </div>
+            <div class="card border-right-0 border-left-0">Metascore:             {{movie.Metascore}}  </div>
+            <div class="card border-right-0 border-left-0">Awards:                {{movie.Awards}}     </div>
+            <div class="card border-right-0 border-left-0">
+              <a target="_blank" href={{movie.Website}}>Website Link</a>
+            </div>
+            <div class="card border-right-0 border-left-0">Country:               {{movie.Country}}    </div>
+            <div class="card border-right-0 border-left-0">Language:              {{movie.Language}}   </div>
+            <div class="card border-right-0 border-left-0">Theatrical Release:    {{movie.Released}}   </div>
+            <div class="card border-right-0 border-left-0">Home Release:          {{movie.DVD}}        </div>
+            <div class="card border-right-0 border-left-0">Box Office:            {{movie.BoxOffice}}  </div>
+          </div>
+
+      </div>
   </div>
+
+
+
 </div>
-
-
-

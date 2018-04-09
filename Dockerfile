@@ -1,22 +1,31 @@
-FROM node:7
+
+
+####
+# Stage 0, based on Node.js, to build and compile Angular
+###
+
+FROM node:8.6 as node
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json /app/
 
 RUN npm install
 
-RUN npm install -g @angular/cli
+COPY ./ /app/
 
-ADD . /app
+# Enables parameter passing into the build process
+ARG env=prod
 
-COPY . .
+RUN npm run build -- --prod --environment $env
 
-EXPOSE 4200
+####
+# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
+###
 
-ENV NAME Movie-App
+FROM nginx:1.13
 
-RUN ng set --global warnings.versionMismatch=false
+# Standard Nginx webroot and .conf locations
+COPY --from=node /app/dist/ /usr/share/nginx/html
 
-CMD ["ng", "serve", "--host", "0.0.0.0"]
-
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default

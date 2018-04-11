@@ -29,7 +29,7 @@ export class OmdbService {
   }
 
   private getReqUrlBase(): string {
-    return `http://www.omdbapi.com/`;
+    return `https://www.omdbapi.com/`;
   }
 
   getMovieByTitle(title: string): Observable<HttpResponse<OmdbMovie>> {

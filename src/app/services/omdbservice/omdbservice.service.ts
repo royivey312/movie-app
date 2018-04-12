@@ -60,8 +60,8 @@ export class OmdbService {
     return this.http.request(req).pipe(
       tap((res: HttpResponse<OMDBSearchResults>) => {
           if (res) {
-            const result = res.body;
-            this.log(`Fetched Movie Search for ${title} from OMDB {totalResults: ${result.totalResults}, response: ${result.Response}`);
+            const result: OMDBSearchResults = res.body;
+            this.log(`Fetched Movie Search for ${title} from OMDB`);
           }
         }),
       catchError(this.handleError<any>(`searchMovieByTitle title=${title}`))

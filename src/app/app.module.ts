@@ -6,9 +6,9 @@ import { HttpClientModule               } from '@angular/common/http';
 import { AppComponent                   } from './app.component';
 import { AppRoutingModule               } from './app-routing.module';
 
-import { MovieService                   } from './services/movie.service';
-import { MessageService                 } from './services/message.service';
-import { OmdbService                    } from './services/omdbservice.service';
+import { MovieService                   } from './services/movie/movie.service';
+import { MessageService                 } from './services/message/message.service';
+import { OmdbService                    } from './services/omdbservice/omdbservice.service';
 
 import { MoviesComponent                } from './components/movies/movies.component';
 import { HeroDetailComponent            } from './components/movie-detail/movie-detail.component';

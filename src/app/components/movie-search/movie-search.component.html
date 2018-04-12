@@ -1,7 +1,7 @@
 <div class="movie-search" id="search-component">
   <h4>Movie Search</h4>
 
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" style="margin-bottom: 10px;"/>
 
   <app-movies *ngIf="movies" [OmdbMovies]="movies"></app-movies>
 

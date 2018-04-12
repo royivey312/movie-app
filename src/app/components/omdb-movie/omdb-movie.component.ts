@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {OmdbMovie} from '../../omdbmovie';
-import {OmdbService} from '../../services/omdbservice.service';
-import {MovieService} from '../../services/movie.service';
-import {Movie} from '../../movie';
+import {OmdbMovie} from '../../domainobjs/omdbmovie';
+import {OmdbService} from '../../services/omdbservice/omdbservice.service';
+import {MovieService} from '../../services/movie/movie.service';
+import {Movie} from '../../domainobjs/movie';
 
 @Component({
   selector: 'app-omdb-movie',

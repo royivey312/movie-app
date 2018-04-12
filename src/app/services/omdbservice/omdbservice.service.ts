@@ -1,14 +1,15 @@
-import {enableProdMode, Injectable} from '@angular/core';
-import {MessageService} from './message.service';
-import {HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpResponse} from '@angular/common/http';
-import {catchError, map, tap} from 'rxjs/operators';
+import { Injectable} from '@angular/core';
+import {MessageService} from '../message/message.service';
+import {HttpClient,  HttpParams, HttpRequest, HttpResponse} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
-import {Movie} from '../movie';
-import {OmdbMovie} from '../omdbmovie';
+import {OmdbMovie} from '../../domainobjs/omdbmovie';
 
 @Injectable()
 export class OmdbService {
+
+  private omdbApiUrl = 'https://www.omdbapi.com/';
 
   constructor(
     private http: HttpClient,
@@ -28,14 +29,10 @@ export class OmdbService {
     };
   }
 
-  private getReqUrlBase(): string {
-    return `https://www.omdbapi.com/`;
-  }
-
   getMovieByTitle(title: string): Observable<HttpResponse<OmdbMovie>> {
     const movieTitle = encodeURI(title);
 
-    const url = this.getReqUrlBase();
+    const url = this.omdbApiUrl;
     const req = new HttpRequest(
       'GET', url,
       {params: new HttpParams().set('apikey', this.accessKey)
@@ -52,7 +49,7 @@ export class OmdbService {
   searchMovieByTitle(title: string): Observable<HttpResponse<OMDBSearchResults>> {
     const movieTitle = title;
 
-    const url = this.getReqUrlBase();
+    const url = this.omdbApiUrl;
 
     const req = new HttpRequest(
       'GET', url,
@@ -61,7 +58,12 @@ export class OmdbService {
     );
 
     return this.http.request(req).pipe(
-      tap(res => { if (res) { this.log(`Fetched Movie Search for ${title} from OMDB`); } } ),
+      tap((res: HttpResponse<OMDBSearchResults>) => {
+          if (res) {
+            const result = res.body;
+            this.log(`Fetched Movie Search for ${title} from OMDB {totalResults: ${result.totalResults}, response: ${result.Response}`);
+          }
+        }),
       catchError(this.handleError<any>(`searchMovieByTitle title=${title}`))
     );
   }

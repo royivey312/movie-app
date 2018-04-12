@@ -2,10 +2,10 @@ import { Injectable     } from '@angular/core';
 import { Observable     } from 'rxjs/Observable';
 import { of             } from 'rxjs/observable/of';
 
-import { Movie          } from '../movie';
-import { MessageService } from './message.service';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-import {OmdbMovie} from '../omdbmovie';
+import { Movie          } from '../../domainobjs/movie';
+import { MessageService } from '../message/message.service';
+import { HttpClient } from '@angular/common/http';
+import {OmdbMovie} from '../../domainobjs/omdbmovie';
 
 @Injectable()
 export class MovieService {

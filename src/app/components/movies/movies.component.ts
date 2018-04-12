@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import { Movie             } from '../../movie';
-import {OmdbMovie} from '../../omdbmovie';
+import { Movie             } from '../../domainobjs/movie';
+import {OmdbMovie} from '../../domainobjs/omdbmovie';
 
 @Component({
   selector: 'app-movies',

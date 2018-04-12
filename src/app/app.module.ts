@@ -11,7 +11,7 @@ import { MessageService                 } from './services/message/message.servi
 import { OmdbService                    } from './services/omdbservice/omdbservice.service';
 
 import { MoviesComponent                } from './components/movies/movies.component';
-import { HeroDetailComponent            } from './components/movie-detail/movie-detail.component';
+import { MovieDetailComponent            } from './components/movie-detail/movie-detail.component';
 import { MessagesComponent              } from './components/messages/messages.component';
 import { DashboardComponent             } from './components/dashboard/dashboard.component';
 import { MovieSearchComponent           } from './components/movie-search/movie-search.component';
@@ -26,7 +26,7 @@ import { UserMoviesComponent } from './components/user-movies/user-movies.compon
   declarations: [
     AppComponent,
     MoviesComponent,
-    HeroDetailComponent,
+    MovieDetailComponent,
     MessagesComponent,
     DashboardComponent,
     MovieSearchComponent,

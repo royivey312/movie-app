@@ -1,44 +1,5 @@
-<div class="movie-detail" *ngIf="movie">
+<div class="movie-detail" style="margin-top: 10px" *ngIf="omovie">
 
-  <div class="grid">
-
-    <div class="row">
-      <div class="column-header">
-        <h2>{{ movie.title | uppercase }}</h2>
-      </div>
-    </div>
-
-    <div class="content-row">
-
-      <div class="column">
-        <div class="label">id:</div>
-      </div>
-
-      <div class="column">
-        {{movie.id}}
-      </div>
-
-    </div>
-
-    <div class="content-row">
-
-      <div class="column">
-        <div class="label">name:</div>
-      </div>
-
-      <div class="column">
-        <input [(ngModel)]="movie.title" placeholder="Title"/>
-      </div>
-
-    </div>
-
-    <div class="content-row">
-
-      <div class="column">
-        <button (click)="goBack()">Go Back</button>
-      </div>
-    </div>
-
-  </div>
+  <app-omdb-movie [movie]="omovie"></app-omdb-movie>
 
 </div>

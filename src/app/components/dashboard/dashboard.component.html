@@ -1,7 +1,7 @@
 <h3 style="margin-bottom: 10px">Top Movies</h3>
 <div class="container">
   <div *ngFor="let movie of updatedMovies()" class="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-      <a routerLink="/detail/{{movie.id}}">
+      <a routerLink="/detail/{{movie.title}}">
         <div class="card module movie">
           <h4>{{movie.title}}</h4>
         </div>

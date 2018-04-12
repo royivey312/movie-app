@@ -3,20 +3,22 @@ import { Location } from '@angular/common';
 import { Movie                    } from '../../domainobjs/movie';
 import {ActivatedRoute} from '@angular/router';
 import {MovieService} from '../../services/movie/movie.service';
+import {OmdbMovie} from '../../domainobjs/omdbmovie';
+import {OmdbService} from '../../services/omdbservice/omdbservice.service';
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
-export class HeroDetailComponent implements OnInit {
+export class MovieDetailComponent implements OnInit {
 
-  @Input() movie: Movie;
+  omovie: OmdbMovie;
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService,
-    private location: Location
+    private location: Location,
+    private omdbService: OmdbService,
   ) { }
 
   ngOnInit() {
@@ -24,9 +26,9 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getMovie(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.movieService.getMovie(id)
-      .subscribe(movie => this.movie = movie);
+    const title = this.route.snapshot.paramMap.get('title');
+    this.omdbService.getMovieByTitle(title)
+      .subscribe(movie => this.omovie = movie.body);
   }
 
   goBack(): void {

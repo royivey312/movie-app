@@ -26,6 +26,7 @@ RUN npm run build -- --prod --environment $env
 FROM nginx:1.13
 
 # Standard Nginx webroot and .conf locations
-COPY --from=node /app/dist/ /usr/share/nginx/html
+COPY --from=node /app/dist/ /var/www/html/movie-app
 
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx-main.conf /etc/nginx.conf

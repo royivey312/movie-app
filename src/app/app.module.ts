@@ -17,7 +17,7 @@ import { DashboardComponent             } from './components/dashboard/dashboard
 import { MovieSearchComponent           } from './components/movie-search/movie-search.component';
 import { NavBarComponent                } from './components/nav-bar/nav-bar.component';
 import { OmdbMovieComponent } from './components/omdb-movie/omdb-movie.component';
-import {MalihuScrollbarModule} from 'ngx-malihu-scrollbar/dist/lib';
+import {MalihuScrollbarModule} from 'ngx-malihu-scrollbar';
 import { MainViewComponent } from './components/main-view/main-view.component';
 import { OcticonDirective } from './directives/octicon/octicon.directive';
 import { UserMoviesComponent } from './components/user-movies/user-movies.component';
